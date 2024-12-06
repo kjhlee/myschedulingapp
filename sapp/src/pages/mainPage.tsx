@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./mainStyle.css";
-import { ScheduleItem, Days, Schedule } from "../types"; // Adjust path if needed
+import { ScheduleItem, Days, Schedule } from "../types";
 
 const MainPage: React.FC = () => {
   const [schedule, setSchedule] = useState<Schedule>({
