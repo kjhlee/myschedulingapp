@@ -41,3 +41,16 @@
 .day-name {
     font-weight: bold;
 }
+.day-items {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.day-item {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}

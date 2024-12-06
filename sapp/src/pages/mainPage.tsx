@@ -1,53 +1,50 @@
-import { useState }from 'react';
-import './mainStyle.css';
+import React, { useState } from "react";
+import "./mainStyle.css";
+import { ScheduleItem, Days, Schedule } from "../types"; // Adjust path if needed
 
+const MainPage: React.FC = () => {
+  const [schedule, setSchedule] = useState<Schedule>({
+    Monday: [],
+    Tuesday: [],
+    Wednesday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: [],
+    Sunday: [],
+  });
 
-const mainPage = () => {
-    const [schedule, setSchedule] = useState({
-        Monday: [],
-        Tuesday: [],
-        Wednesday: [],
-        Thursday: [],
-        Friday: [],
-        Saturday: [],
-        Sunday: []
-    });
-
-    const handleAddItem = (day) => {
-
+  const handleAddItem = (day: Days) => {
+    const name = prompt("Enter name:");
+    const shift = prompt("Enter shift time:");
+    if (name && shift) {
+      setSchedule((prevSchedule) => ({
+        ...prevSchedule,
+        [day]: [...prevSchedule[day], { name, shift }],
+      }));
     }
-}
+  };
 
-function mainPage() {
-    return (
-        <div className = "main-container">
-            <h1 className = "title">Sapp</h1>
-            <p className = "subtitle">by: kj lee</p>
-            <div className = "schedule-grid">
-                <div className = "day mon">
-                    <p>Monday</p>
+  return (
+    <div className="main-container">
+      <div className="title">Sapp</div>
+      <div className="subtitle">by: kj lee</div>
+      <div className="schedule-grid">
+        {Object.keys(schedule).map((day) => (
+          <div key={day} className="day" onClick={() => handleAddItem(day as Days)}>
+            <div className="day-name">{day}</div>
+            <div className="day-items">
+              {schedule[day as Days].map((item, index) => (
+                <div key={index} className="day-item">
+                  <div>{item.name}</div>
+                  <div>{item.shift}</div>
                 </div>
-                <div className = "day tues">
-                    <p>Tuesday</p>
-                </div>
-                <div className = "day wed">
-                    <p>Wednesday</p>
-                </div>
-                <div className = "day thurs">
-                    <p>Thursday</p>
-                </div>
-                <div className = "day fri">
-                    <p>Friday</p>
-                </div>
-                <div className = "day sat">
-                    <p>Satuday</p>
-                </div>
-                <div className = "day sun">
-                    <p>Sunday</p>
-                </div>
-                
+              ))}
             </div>
-        </div>
-    );
-}
-export default mainPage;
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MainPage;
