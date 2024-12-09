@@ -39,6 +39,7 @@
 }
 
 .shift {
+    position: relative;
     width: 120px; /* Ensure the shift box is not too wide */
     padding: 10px;
     margin-bottom: 10px; /* Add space between shifts */
@@ -54,5 +55,12 @@ ul {
 }
 
 .del-btn {
-    
+    position: absolute;
+    border: none;
+    font-weight: bold;
+    background-color: #ccc;
+    font-size: 18px;
+    right: 5px;
+    top: 2px;
+    color: red;
 }

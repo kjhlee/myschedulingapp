@@ -35,33 +35,12 @@ const MainPage: React.FC = () => {
         }));
     }
 
-    const handleShiftClick = () => (event: React.MouseEvent<HTMLLIElement>) => {
+    const handleEditClick = (day: string, index: number) => (event: React.MouseEvent<HTMLLIElement>) => {
         event.stopPropagation(); // Prevent parent click handler
+        setPopupVisible(true);
     };
 
     return (
-        // <div className="main-container">
-        // <button onClick={() => setButtonPopup(true)}>Open Popup</button>
-        // {buttonPopup && <Popup setButtonPopup={setButtonPopup} />}
-        
-        // <div className="title">Sapp</div>
-        // <div className="subtitle">by: kj lee</div>
-        // <div className="schedule-grid">
-        //     {Object.keys(schedule).map((day) => (
-        //     <div key={day} className="day" onClick={() => handleAddItem(day as Days)}>
-        //         <div className="day-name">{day}</div>
-        //         <div className="day-items">
-        //         {schedule[day as Days].map((item, index) => (
-        //             <div key={index} className="day-item">
-        //             <div>{item.name}</div>
-        //             <div>{item.shift}</div>
-        //             </div>
-        //         ))}
-        //         </div>
-        //     </div>
-        //     ))}
-        // </div>
-        // </div>
         <div>
             <div className = 'title'>SAPP</div>
             <div className = 'main-container'>
@@ -71,8 +50,15 @@ const MainPage: React.FC = () => {
                             <h3>{day}</h3>
                             <ul>
                                 {shifts[day].map((shift, index) => (
-                                <li key={index} className = 'shift' onClick={handleShiftClick()}>
-                                    <button className = 'del-btn' onClick={handleDeleteShift(day, index)}>x</button>
+                                <li key={index} className = 'shift' onClick={handleEditClick(day, index)}>
+                                    <button 
+                                    className = 'del-btn' 
+                                    onClick={(e) => {
+                                        e.stopPropagation(); 
+                                        handleDeleteShift(day, index)(e)
+                                        }}>
+                                            x
+                                    </button>
                                     <div className = 'shift-name'>{shift.name}:</div>
                                     <div className = 'shift-time'>{shift.startTime} - {shift.endTime}</div>
                                 </li>
