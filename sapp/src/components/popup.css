@@ -56,7 +56,7 @@ select {
     margin: 10px;
 }
 
-button {
+.close-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 20px;

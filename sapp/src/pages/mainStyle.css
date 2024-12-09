@@ -17,40 +17,42 @@
 }
 
 .schedule-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    height: 700px;
     background-color: grey;
-    height: 100%;
+    display: flex; /* Use flexbox for column layout */
+    gap: 10px; /* Space between columns */
 }
 
-.day {
-    background-color: #e1e1e1;
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
+.day-column {
+    flex: 1; /* Make each column equally wide */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-items: center; 
-    justify-content: flex-start; 
-    height: 700px; 
-}
-
-.day-name {
-    font-weight: bold;
-}
-.day-items {
-    margin-top: 10px;
-    width: 100%;
-}
-
-.day-item {
-    background-color: #ffffff;
+    flex-direction: column; /* Stack shifts vertically */
+    border: 1px solid black; /* Optional: Add a border around each column */
     padding: 10px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
+    background-color: #f8f8f8; /* Background color for each day */
+    align-items: center;
+}
+
+.day-column h3 {
+    text-align: center; /* Center-align the day title */
+    margin-bottom: 10px;
+}
+
+.shift {
+    width: 120px; /* Ensure the shift box is not too wide */
+    padding: 10px;
+    margin-bottom: 10px; /* Add space between shifts */
     border-radius: 5px;
     text-align: center;
+    background-color: #ccc;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.del-btn {
+    
 }

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import "./popup.css"
+import { ScheduleItem } from '../types';
 
 
 
 function Popup({
-    setButtonPopup,
+    setPopupVisible,
+    selectedDay,
+    addShift,
   }: {
-    setButtonPopup: React.Dispatch<React.SetStateAction<boolean>>;
+    setPopupVisible: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedDay: string | null;
+    addShift: (day: string, shift: ScheduleItem) => void;
   }) 
   {
     const [name, setName] = useState<string>("");
@@ -17,13 +22,15 @@ function Popup({
     const [endAmPm, setEndAmPm] = useState("PM");
 
     const handleClose = () => {
-        setButtonPopup(false);
+        setPopupVisible(false);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(name, startTime, endTime);
-        setButtonPopup(false);
+        if(selectedDay){
+            addShift(selectedDay, {name, startTime, endTime});
+        }
+        setPopupVisible(false);
     }
 
     return (
