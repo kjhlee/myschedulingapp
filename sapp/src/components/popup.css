@@ -33,7 +33,7 @@ label {
     display: flex;
     flex-direction: column; /* Stack label and input vertically */
     align-items: center; /* Center the text and inputs */
-    font-size: 12px; /* Optional: Adjust font size */
+    font-size: 15px; /* Optional: Adjust font size */
     color: black; /* Optional: Ensure the text is visible */
 }
 
@@ -64,4 +64,17 @@ select {
     color: white;
     cursor: pointer;
     font-size: 16px;
+}
+
+.form-submission {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    align-items: center;
+    margin: 0 auto;
+    display: block;
 }

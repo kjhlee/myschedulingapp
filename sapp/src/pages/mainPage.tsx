@@ -6,6 +6,7 @@ import Popup from "../components/popup";
 const MainPage: React.FC = () => {
     const [selectedDay, setSelectedDay] = useState<string | null>(null);
     const[popupVisible, setPopupVisible] = useState(false);
+    // const [editShift, setEditShift] = useState<{ day: string; index: number; data: ScheduleItem } | null>(null);
     const [shifts, setShifts] = useState<{[key: string]: ScheduleItem[] }>({
         Monday: [],
         Tuesday: [],
@@ -29,6 +30,7 @@ const MainPage: React.FC = () => {
     };
 
     const handleDeleteShift = (day: string, index: number) => (event: React.MouseEvent<HTMLButtonElement>) =>{
+        event.stopPropagation();
         setShifts((prevShifts) => ({
             ...prevShifts,
             [day]: prevShifts[day].filter((_, i) => i !== index),
@@ -37,12 +39,18 @@ const MainPage: React.FC = () => {
 
     const handleEditClick = (day: string, index: number) => (event: React.MouseEvent<HTMLLIElement>) => {
         event.stopPropagation(); // Prevent parent click handler
+        const shift = shifts[day][index];
+        // setEditShift({day, index, data: shift});
         setPopupVisible(true);
     };
+    const cslog = () => {
+        console.log(shifts);
+    }
 
     return (
         <div>
             <div className = 'title'>SAPP</div>
+            <div className = 'subtitle'>by: kj lee</div>
             <div className = 'main-container'>
                 <div className = 'schedule-grid'>
                     {Object.keys(shifts).map((day) => (
@@ -75,6 +83,7 @@ const MainPage: React.FC = () => {
             addShift={addShift}
           />
         )}
+        <button onClick={cslog}>button</button>
       </div>
     );
 };
